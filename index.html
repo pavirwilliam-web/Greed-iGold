@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Le jeu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="phone">
+
+  <!-- Barre du haut : stats + réglages -->
+  <div class="topbar">
+    <div class="stats">
+      <div class="stat-row">
+        <span class="stat-icon">★</span>
+        <span class="stat-label">LV</span>
+        <div class="stat-bar"><div class="stat-fill" id="lv-fill"></div></div>
+        <span class="stat-value" id="lv-value">1</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-icon gold-icon">●</span>
+        <span class="stat-label">Or</span>
+        <div class="stat-bar"><div class="stat-fill gold" id="gold-fill"></div></div>
+        <span class="stat-value" id="gold-value">0</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-icon spritz-icon">◆</span>
+        <span class="stat-label">Spritz</span>
+        <div class="stat-bar"><div class="stat-fill spritz" id="spritz-fill"></div></div>
+        <span class="stat-value" id="spritz-value">0</span>
+      </div>
+    </div>
+    <button class="settings-btn" id="settings-btn" aria-label="Réglages">
+      <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 8a4 4 0 100 8 4 4 0 000-8zm8.9 4a7.4 7.4 0 00-.15-1.5l2-1.55-2-3.46-2.35.95a7.6 7.6 0 00-2.6-1.5L15.4 2H8.6l-.4 2.94a7.6 7.6 0 00-2.6 1.5l-2.35-.95-2 3.46 2 1.55A7.4 7.4 0 003.1 12c0 .5.05 1 .15 1.5l-2 1.55 2 3.46 2.35-.95c.75.65 1.63 1.16 2.6 1.5l.4 2.94h6.8l.4-2.94a7.6 7.6 0 002.6-1.5l2.35.95 2-3.46-2-1.55c.1-.5.15-1 .15-1.5z"/></svg>
+    </button>
+  </div>
+
+  <!-- Panneau central : classement -->
+  <section class="panel classement-panel">
+    <h2>Classement</h2>
+    <ol class="ranking-list" id="ranking-list"></ol>
+  </section>
+
+  <!-- Aperçu du personnage -->
+  <section class="character-area">
+    <button class="add-friend-btn" id="add-friend-btn" aria-label="Ajouter">+</button>
+    <div class="character-frame">
+      <div class="character-placeholder">Votre personnage</div>
+    </div>
+  </section>
+
+  <!-- Barre de navigation basse -->
+  <nav class="bottombar">
+    <button class="bottom-btn active">Accueil</button>
+    <button class="bottom-btn">Missions</button>
+    <button class="bottom-btn">Guilde</button>
+  </nav>
+
+  <!-- Menu vertical d'onglets (droite) -->
+  <nav class="side-tabs" id="side-tabs">
+    <button class="tab-btn" data-tab="collection">
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M4 4h9v9H4V4zm11 0h5v5h-5V4zM4 15h5v5H4v-5zm7 2h9v3h-9v-3z"/></svg>
+      </span>
+      <span class="tab-label">Collection</span>
+    </button>
+    <button class="tab-btn" data-tab="amalgame">
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="9" cy="12" r="6" fill="currentColor" opacity=".55"/><circle cx="15" cy="12" r="6" fill="currentColor" opacity=".55"/></svg>
+      </span>
+      <span class="tab-label">Amalgame</span>
+    </button>
+    <button class="tab-btn" data-tab="donjon">
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M4 21V10l8-6 8 6v11h-5v-6H9v6H4z"/></svg>
+      </span>
+      <span class="tab-label">Donjon</span>
+    </button>
+    <button class="tab-btn" data-tab="boutique">
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M4 9l1.5-5h13L20 9v2h-1v9H5v-9H4V9zm3 2v7h10v-7H7zm1-2h8l-1-4H9L8 9z"/></svg>
+      </span>
+      <span class="tab-label">Boutique</span>
+    </button>
+    <button class="tab-btn" data-tab="personnage">
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="8" r="4" fill="currentColor"/><path fill="currentColor" d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8H4z"/></svg>
+      </span>
+      <span class="tab-label">Personnage</span>
+    </button>
+    <button class="tab-btn tab-duel" data-tab="duel">
+      <span class="tab-icon">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M6.5 2L2 6.5l3 3L20 3l-2-2-9.5 9.5-2-2L10 5 6.5 2zm11 11l-3-3-1.5 1.5 3 3-6 6 2 2 6-6 3 3 1.5-1.5-3-3L22 10l-2-2-2.5 2.5z"/></svg>
+      </span>
+      <span class="tab-label">Duel</span>
+    </button>
+  </nav>
+
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
